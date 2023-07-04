@@ -12,6 +12,8 @@ void DrawCircle(float r, float x0, float y0);
 void DesenhaFumaca(int frame);
 void DesenhaNaveHitbox();
 void DesenhaNave();
+void DesenhaTiro();
+void DesenhaAsteroide();
 
 /*Funções de Callback do Teclado*/
 void Keyboard(unsigned char key, int x, int y);
@@ -19,7 +21,9 @@ void TeclasEspeciais(int key, int x, int y);
 
 /*Funções para Desenhar Elementos na Tela*/
 void DesenhaNaveTela();
-void DesenhaTiro();
+void DesenhaTiroTela();
+void DesenhaAsteroideTela();
+void DesenhaLog();
 void DesenhaTela(int value);
 
 /*Funções para Monitoramento de Condições*/
@@ -29,7 +33,9 @@ void GarbageCollector(int value);
 /*Funções de Atualização de Estado do Jogo*/
 void AtualizaNave();
 void AtualizaTiro();
+void AtualizaAsteroid();
 void AtualizaEstado(int value);
+void CreateAsteroid(int value);
 
 /*Funções Básicas para Operação do Sistema*/
 void Inicializar(void);
@@ -38,6 +44,8 @@ void Reshape(GLsizei w, GLsizei h);
 
 /*Funções Auxiliares*/
 float Radian(float angle);
+float Degree(float angle);
+unsigned long long currentTimestampMillis();
 
 /*Estruturas de Dados e Funções para Manipulá-las*/
 void createElement(element * newElement, float x, float y, int type, float angle);

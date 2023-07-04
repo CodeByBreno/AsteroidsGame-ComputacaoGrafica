@@ -18,5 +18,15 @@ void GarbageCollector(int value){
 			popElementP_LE(&Tiros, i);
 		}
 	}
+
+	for (int i = 0; i < tamanho_LE(&Asteroides); i++){
+		element aux = getElement_LE(&Asteroides, i);
+
+		//Tiro saiu da tela, deve ser removido da lista de tiros
+		if ((aux.x >= 660) || (aux.x <= -660) || (aux.y >= 560) || (aux.y <= -560)){
+			popElementP_LE(&Asteroides, i);
+		}
+	}
+
 	glutTimerFunc(GARBAGE_TIME, GarbageCollector, 0);
 }

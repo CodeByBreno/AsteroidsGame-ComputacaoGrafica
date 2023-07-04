@@ -11,11 +11,12 @@
 #include <math.h>
 #include <gl/glut.h>
 #include <Windows.h>
+#include <time.h>
 
 #include "0 - Configuracoes.cpp"
 #include "Header.h"
 #include "1 - Formas.cpp"
-#include "2 - Nave.cpp"
+#include "2 - Componentes.cpp"
 #include "3 - Teclado.cpp"
 #include "4 - DesenharElementos.cpp"
 #include "5 - Monitoramento.cpp"
@@ -53,6 +54,9 @@ int main(){
 
 	//Função responsável por eliminar elementos fora da tela
 	glutTimerFunc(GARBAGE_TIME, GarbageCollector, 0);
+
+	//Função responsável por gerar um asteroide a cada intervalo de tempo
+	glutTimerFunc(TEMPO_CRIACAO_ASTEROIDE, CreateAsteroid, 0);	
 
 	Inicializar();
 

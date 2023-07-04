@@ -1,3 +1,32 @@
+void DesenhaAsteroide(){
+	glBegin(GL_POLYGON);
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glVertex2f(-10.0f, 40.0f);
+		glVertex2f(-30.0f, 30.0f);
+		glVertex2f(-35.0f, -5.0f);
+		glVertex2f(-30.0f, -25.0f);
+		glVertex2f(-6.0f, -40.0f);
+		glVertex2f(4.0f, -40.0f);
+		glVertex2f(30.0f, -30.0f);
+		glVertex2f(35.0f, -15.0f);
+		glVertex2f(30.0f, 25.0f);
+		glVertex2f(20.0f, 35.0f);
+	glEnd();
+}
+
+void DesenhaTiro(){
+	glColor3f(0.0f, 1.0f, 0.5f);
+	DrawRectangle(6.0f, 44.0f, 1.0f, 30.0f);
+	DrawRectangle(-8.0f, 44.0f, 1.0f, 30.0f);
+	DrawRectangle(15.0f, 42.0f, 1.0f, 36.0f);
+	DrawRectangle(-17.0f, 42.0f, 1.0f, 36.0f);
+
+	glColor3f(0.5f, 1.0f, 0.8f);
+	DrawRectangle(7.0f, 44.0f, 1.0f, 30.0f);
+	DrawRectangle(-7.0f, 44.0f, 1.0f, 30.0f);
+	DrawRectangle(16.0f, 42.0f, 1.0f, 36.0f);
+	DrawRectangle(-16.0f, 42.0f, 1.0f, 36.0f);
+}
 
 void DesenhaBordaNave(){
 	glBegin(GL_LINES);

@@ -1,5 +1,7 @@
-
+//
 //Atualização de Estado
+//
+
 void AtualizaNave(){
 	int signal;
 	if (r_nave < 0){
@@ -23,6 +25,7 @@ void AtualizaNave(){
 
 void AtualizaTiro(){
 	float dx, dy;
+	printf("\nTiros:\n");
 	apresentar_LE(&Tiros);
 
 	for (int i = 0; i < Tiros.size; i++){
@@ -33,6 +36,20 @@ void AtualizaTiro(){
 	}
 }
 
+void AtualizaAsteroide(){
+	float dx, dy;
+	printf("\nAsteroides: \n");
+	apresentar_LE(&Asteroides);
+
+	for (int i = 0; i < Asteroides.size; i++){
+		dx = -VELOCIDADE_ASTEROIDE*sin(Radian(Asteroides.elements[i].angle));
+		dy = VELOCIDADE_ASTEROIDE*cos(Radian(Asteroides.elements[i].angle));
+		Asteroides.elements[i].x += dx;
+		Asteroides.elements[i].y += dy;
+	}	
+
+}
+
 void AtualizaEstado(int value){
 	if (counter_shoot < SHOOT_COUNTER) { counter_shoot++; }    //Um novo tiro só poderá ser disparado quando o contador atingir o valor máximo (SHOOT_COUNTER)
 	if (counter_smooth < SMOOTH_COUNTER) { counter_smooth++; } //A nave não para de imediato. Após parar de move-lá, somente quando o contador chegar ao valor
@@ -40,5 +57,47 @@ void AtualizaEstado(int value){
 
 	AtualizaNave();
 	AtualizaTiro();
+	AtualizaAsteroide();
+}
+
+void CreateAsteroid(int value){
+
+    unsigned long long seed = currentTimestampMillis();
+    srand((unsigned)seed);
+
+	int angle, randomNum, geracaoAsteroide = rand()%4;
+	int tipoAsteroide = rand()%2;
+	float x_asteroide, y_asteroide;
+
+	switch(geracaoAsteroide%4){
+		case 0:
+			randomNum = rand()%1300;
+			x_asteroide = 550.0f;
+			y_asteroide = (float)randomNum - 650.0;
+			break;
+		case 1:
+			randomNum = rand()%1300;
+			x_asteroide = -550.0f;
+			y_asteroide = (float)randomNum - 650.0;
+			break;
+		case 2:
+			randomNum = rand()%1100;
+			x_asteroide = (float)randomNum - 550.0;
+			y_asteroide = -650.0f;
+			break;
+		case 3:
+			randomNum = rand()%1100;
+			x_asteroide = (float)randomNum - 550.0;
+			y_asteroide = 650.0f;		
+			break;
+		default:
+			printf("ERRO: Problema ao gerar um asteroide novo\n");
+	}
+
+	printf("NOVO ASTEROIDE CRIADO\n");
+	angle = 180.0 - Degree(y_asteroide/x_asteroide);
+	addElement_LE(&Asteroides, x_asteroide, y_asteroide, tipoAsteroide, angle);
+
+	glutTimerFunc(TEMPO_CRIACAO_ASTEROIDE, CreateAsteroid, 0);
 }
 

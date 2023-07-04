@@ -1,18 +1,4 @@
 
-void DesenhaTiro(){
-	glColor3f(0.0f, 1.0f, 0.5f);
-	DrawRectangle(6.0f, 44.0f, 1.0f, 30.0f);
-	DrawRectangle(-8.0f, 44.0f, 1.0f, 30.0f);
-	DrawRectangle(15.0f, 42.0f, 1.0f, 36.0f);
-	DrawRectangle(-17.0f, 42.0f, 1.0f, 36.0f);
-
-	glColor3f(0.5f, 1.0f, 0.8f);
-	DrawRectangle(7.0f, 44.0f, 1.0f, 30.0f);
-	DrawRectangle(-7.0f, 44.0f, 1.0f, 30.0f);
-	DrawRectangle(16.0f, 42.0f, 1.0f, 36.0f);
-	DrawRectangle(-16.0f, 42.0f, 1.0f, 36.0f);
-}
-
 void DesenhaNaveTela(){
 	glPushMatrix();
 		glTranslatef(x_nave, y_nave, 0.0f);
@@ -22,9 +8,31 @@ void DesenhaNaveTela(){
 	glPopMatrix();
 }
 
-void DesenhaTela(int value){
-	glClear(GL_COLOR_BUFFER_BIT);
+void DesenhaTiroTela(){
+	for (int i = 0; i < Tiros.size; i++){
+		element aux = getElement_LE(&Tiros, i);
+		
+		glPushMatrix();
+			glTranslatef(aux.x, aux.y, 0.0f);
+			glRotatef(aux.angle, 0.0f, 0.0f, 1.0f);
+			DesenhaTiro();
+		glPopMatrix();
+	}
+}
 
+void DesenhaAsteroideTela(){	
+	for (int i = 0; i < Asteroides.size; i++){
+		element aux = getElement_LE(&Asteroides, i);
+		
+		glPushMatrix();
+			glTranslatef(aux.x, aux.y, 0.0f);
+			glRotatef(aux.angle, 0.0f, 0.0f, 1.0f);
+			DesenhaAsteroide();
+		glPopMatrix();
+	}
+}
+
+void DesenhaLog(){
 	//Desenhando o log do jogo
 	glViewport(0, 0, LOG_LARGURA, ALTURA_JANELA);
 	glBegin(GL_QUADS);
@@ -35,30 +43,30 @@ void DesenhaTela(int value){
 		glVertex2f(CANVA_X0 + CANVA_WIDTH, CANVA_Y0);
 		glVertex2f(CANVA_X0, CANVA_Y0);	
 	glEnd();
+}
+
+void DesenhaTela(int value){
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	//Desenhando o log do Jogo
+	DesenhaLog();
 
 	//Desenhando a parte do Jogo
 	glViewport(LOG_LARGURA, 0, LARGURA_JANELA - LOG_LARGURA, ALTURA_JANELA);
+
+	//A Nave
 	DesenhaNaveTela();
-	DrawRectangle(x_test, y_test, 30.0f, 30.0f);
 
 	//Desenhando os Tiros
-	for (int i = 0; i < Tiros.size; i++){
-		element aux = getElement_LE(&Tiros, i);
-		
-		glPushMatrix();
-			glTranslatef(aux.x, aux.y, 0.0f);
-			glRotatef(aux.angle, 0.0f, 0.0f, 1.0f);
-			DesenhaTiro();
-		glPopMatrix();
-	}
+	DesenhaTiroTela();
+
+	//Desenha os Asteroides
+	DesenhaAsteroideTela();
 
 	glFlush();
 }
 
 void AtualizaTela(int value){
-	x_test += 1.0f;
-	y_test += 1.0f;
-	//printf("teste\n");
 
 	//Redesenho da Tela
 	AtualizaEstado(0);

@@ -1,8 +1,9 @@
-void createElement(element * newElement, float x, float y, int type, float angle){
+void createElement(element * newElement, float x, float y, int type, float angle, float radius){
 	newElement->x = x;
 	newElement->y = y;
 	newElement->type = type;
 	newElement->angle = angle;
+	newElement->radius = radius;
 }
 
 void inicializar_LE(listElements * entrada){
@@ -13,14 +14,15 @@ void inicializar_LE(listElements * entrada){
 void apresentar_LE(listElements * entrada){
 	printf("Tamanho: %d\n", entrada->size);
 	for (int i = 0; i < entrada->size; i++){
-		printf("Tipo: %d | Ponto %d: (%.2f, %.2f) | Angulo: %.2f\n", 
-				entrada->elements[i].type, i+1, entrada->elements[i].x, entrada->elements[i].y, entrada->elements[i].angle);
+		printf("Tipo: %d | Ponto %d: (%.2f, %.2f) | Angulo: %.2f | HitboxRadius = %.2f\n", 
+				entrada->elements[i].type, i+1, entrada->elements[i].x, entrada->elements[i].y, 
+				entrada->elements[i].angle, entrada->elements[i].radius);
 	}
 }
 
-void addElement_LE(listElements * entrada, float x, float y, int type, float angle){
+void addElement_LE(listElements * entrada, float x, float y, int type, float angle, float radius){
 	element aux;
-	createElement(&aux, x, y, type, angle);
+	createElement(&aux, x, y, type, angle, radius);
 
 	entrada->elements = (element *) realloc(entrada->elements, (entrada->size + 1)*sizeof(element));
 	entrada->size = entrada->size + 1;
@@ -43,7 +45,9 @@ void popElement_LE(listElements * entrada, float x, float y){
 
 	for (int i = 0; i < entrada->size; i++){
 		if ((entrada->elements[i].x != x) && (entrada->elements[i].y != y)){
-			addElement_LE(&aux, entrada->elements[i].x, entrada->elements[i].y, entrada->elements[i].type, entrada->elements[i].angle);
+			addElement_LE(&aux, entrada->elements[i].x, entrada->elements[i].y, 
+						  entrada->elements[i].type, entrada->elements[i].angle,
+						  entrada->elements[i].radius);
 		}	
 	}
 
@@ -56,7 +60,9 @@ void popElementP_LE(listElements * entrada, int p){
 
 	for (int i = 0; i < entrada->size; i++){
 		if (i != p){
-			addElement_LE(&aux, entrada->elements[i].x, entrada->elements[i].y, entrada->elements[i].type, entrada->elements[i].angle);
+			addElement_LE(&aux, entrada->elements[i].x, entrada->elements[i].y, 
+						  entrada->elements[i].type, entrada->elements[i].angle,
+						  entrada->elements[i].radius);
 		}	
 	}
 

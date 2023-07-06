@@ -1,16 +1,243 @@
-void DesenhaAsteroide(){
+void DesenhaAsteroide(int type){
+	switch(type){
+		case 0:
+			DesenhaAsteroide1();
+			break;
+		case 1:
+			DesenhaAsteroide2();
+			break;
+		case 2:
+			DesenhaAsteroide3();
+			break;
+		case 3:
+			DesenhaAsteroide4();
+			break;
+		case 4:
+			DesenhaAsteroide5();
+			break;
+		default:
+			printf("ERRO: Tentativa de desenhar uma variedade de Asteroide nao definida\n");
+			printf("VALOR: %d", type);
+			exit(501);
+	}
+}
+
+void DesenhaAsteroide5(){
 	glBegin(GL_POLYGON);
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glVertex2f(-10.0f, 40.0f);
+		glColor3f(0.35f, 0.35f, 0.35f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(0.0f, 50.0f);
+		glVertex2f(30.0f, 30.0f);
+		glVertex2f(50.0f, 0.0f);
+		glVertex2f(40.0f, -40.0f);
+		glVertex2f(20.0f, -50.0f);
+		glVertex2f(-30.0f, -50.0f);
+		glVertex2f(-50.0f, -30.0f);
+		glVertex2f(-50.0f, 30.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.5f, 0.5f, 0.5f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(0.0f, 50.0f);
+		glVertex2f(30.0f, 30.0f);
+		glVertex2f(50.0f, 0.0f);
+		glVertex2f(40.0f, -20.0f);
+		glVertex2f(20.0f, -35.0f);
+		glVertex2f(0.0f, -40.0f);
+		glVertex2f(-40.0f, -30.0f);
+		glVertex2f(-50.0f, -10.0f);
+		glVertex2f(-50.0f, 30.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.66f, 0.66f, 0.66f);
+		glVertex2f(-50.0f, 30.0f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(0.0f, 50.0f);
+		glVertex2f(30.0f, 30.0f);
+		glVertex2f(30.0f, -10.0f);
+		glVertex2f(20.0f, -20.0f);
+		glVertex2f(0.0f, -30.0f);
+		glVertex2f(-30.0f, -20.0f);
+		glVertex2f(-50.0f, -5.0f);
+	glEnd();
+
+	//Ouro
+	glBegin(GL_POLYGON);
+		glColor3f(1.0f, 1.0f, 0.0f);
+		glVertex2f(-20.0f, 45.0f);
+		glVertex2f(-10.0f, 45.0f);
+		glVertex2f(0.0f, 35.0f);
+		glVertex2f(0.0f, 25.0f);
+		glVertex2f(-10.0f, 25.0f);
+		glVertex2f(-20.0f, 35.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(1.0f, 1.0f, 0.0f);
+		glVertex2f(0.0f, 15.0f);
+		glVertex2f(10.0f, 15.0f);
+		glVertex2f(20.0f, 5.0f);
+		glVertex2f(20.0f, -5.0f);
+		glVertex2f(10.0f, -5.0f);
+		glVertex2f(0.0f, 5.0f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+		glColor3f(1.0f, 1.0f, 0.0f);
+		
+		glVertex2f(15.0f, 35.0f);
+		glVertex2f(25.0f, 25.0f);
+		glVertex2f(15.0f, 15.0f);
+		glVertex2f(5.0f, 25.0f);
+
+		glVertex2f(-10.0f, 0.0f);
+		glVertex2f(0.0f, -10.0f);
+		glVertex2f(-10.0f, -20.0f);
+		glVertex2f(-20.0f, -10.0f);
+
 		glVertex2f(-30.0f, 30.0f);
-		glVertex2f(-35.0f, -5.0f);
-		glVertex2f(-30.0f, -25.0f);
-		glVertex2f(-6.0f, -40.0f);
+		glVertex2f(-20.0f, 20.0f);
+		glVertex2f(-30.0f, 10.0f);
+		glVertex2f(-40.0f, 20.0f);
+
+		glVertex2f(-25.0f, 10.0f);
+		glVertex2f(-20.0f, 5.0f);
+		glVertex2f(-25.0f, 0.0f);
+		glVertex2f(-30.0f, 5.0f);
+
+		glVertex2f(5.0f, -10.0f);
+		glVertex2f(10.0f, -15.0f);
+		glVertex2f(5.0f, -20.0f);
+		glVertex2f(0.0f, -15.0f);
+
+		glVertex2f(-45.0f, 10.0f);
+		glVertex2f(-40.0f, 5.0f);
+		glVertex2f(-45.0f, 0.0f);
+		glVertex2f(-50.0f, 5.0f);
+
+	glEnd();
+}
+
+void DesenhaAsteroide4(){
+	glBegin(GL_POLYGON);
+		glColor3f(0.5f, 0.7f, 0.8f);
+		glVertex2f(-10.0f, 10.0f);
+		glVertex2f(0.0f, -10.0f);
+		glVertex2f(20.0f, -10.0f);
+		glVertex2f(0.0f, -20.0f);
+		glVertex2f(-10.0f, -10.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.7f, 0.9f, 1.0f);
+		glVertex2f(0.0f, 20.0f);
+		glVertex2f(20.0f, 0.0f);
+		glVertex2f(20.0f, -10.0f);
+		glVertex2f(0.0f, -10.0f);
+		glVertex2f(-10.0f, 10.0f);
+	glEnd();
+}
+
+void DesenhaAsteroide3(){
+	glBegin(GL_POLYGON);
+		glColor3f(0.45f, 0.45f, 0.45f);
+		glVertex2f(40.0f, 10.0f);
+		glVertex2f(40.0f, -20.0f);
+		glVertex2f(20.0f, -30.0f);
+		glVertex2f(-20.0f, -30.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.66f, 0.66f, 0.66f);
+		glVertex2f(-40.0f, 0.0f);
+		glVertex2f(-20.0f, -30.0f);
+		glVertex2f(20.0f, -20.0f);
+		glVertex2f(40.0f, 10.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.85f, 0.85f, 0.85f);
+		glVertex2f(0.0f, 30.0f);
+		glVertex2f(40.0f, 10.0f);
+		glVertex2f(-10.0f, -20.0f);
+		glVertex2f(-40.0f, 0.0f);
+		glVertex2f(-30.0f, 20.0f);
+	glEnd();
+}
+
+void DesenhaAsteroide2(){
+	glBegin(GL_POLYGON);
+		glColor3f(0.3f, 0.3f, 0.3f);
 		glVertex2f(4.0f, -40.0f);
 		glVertex2f(30.0f, -30.0f);
 		glVertex2f(35.0f, -15.0f);
-		glVertex2f(30.0f, 25.0f);
 		glVertex2f(20.0f, 35.0f);
+		glVertex2f(25.0f, -15.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.5f, 0.5f, 0.5f);
+		glVertex2f(20.0f, 35.0f);
+		glVertex2f(25.0f, -15.0f);
+		glVertex2f(4.0f, -40.0f);
+		glVertex2f(-6.0f, -40.0f);
+		glVertex2f(15.0f, -10.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.66f, 0.66f, 0.66f);
+		glVertex2f(-10.0f, 40.0f);
+		glVertex2f(-30.0f, 30.0f);
+		glVertex2f(-35.0f, -5.0f);
+		glVertex2f(-6.0f, -40.0f);
+		glVertex2f(15.0f, -10.0f);
+		glVertex2f(20.0f, 35.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.85f, 0.85f, 0.85f);
+		glVertex2f(-10.0f, 40.0f);
+		glVertex2f(-30.0f, 30.0f);
+		glVertex2f(-35.0f, -5.0f);
+		glVertex2f(-12.0f, 0.0f);
+		glVertex2f(0.0f, 20.0f);
+	glEnd();
+}
+
+void DesenhaAsteroide1(){
+	glBegin(GL_POLYGON);
+		glColor3f(0.45f, 0.45f, 0.45f);
+		glVertex2f(-50.0f, 20.0f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(30.0f, 40.0f);
+		glVertex2f(50.0f, 10.0f);
+		glVertex2f(50.0f, -20.f);
+		glVertex2f(30.0f, -40.0f);
+		glVertex2f(-30.0f, -40.0f);
+		glVertex2f(-50.0f, 0.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.7f, 0.7f, 0.7f);
+		glVertex2f(-50.0f, 20.0f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(30.0f, 40.0f);
+		glVertex2f(50.0f, 10.0f);
+		glVertex2f(50.0f, -20.f);
+		glVertex2f(30.0f, -30.0f);
+		glVertex2f(-25.0f, -20.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glColor3f(0.85f, 0.85f, 0.85f);
+		glVertex2f(-30.0f, 50.0f);
+		glVertex2f(30.0f, 40.0f);
+		glVertex2f(50.0f, 10.0f);
+		glVertex2f(50.0f, -20.f);
+		glVertex2f(30.0f, -20.0f);
+		glVertex2f(-15.0f, -10.0f);	
 	glEnd();
 }
 

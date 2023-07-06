@@ -27,7 +27,7 @@ void DesenhaAsteroideTela(){
 		glPushMatrix();
 			glTranslatef(aux.x, aux.y, 0.0f);
 			glRotatef(aux.angle, 0.0f, 0.0f, 1.0f);
-			DesenhaAsteroide();
+			DesenhaAsteroide(aux.type);
 		glPopMatrix();
 	}
 }
@@ -63,6 +63,9 @@ void DesenhaTela(int value){
 	//Desenha os Asteroides
 	DesenhaAsteroideTela();
 
+	//Debugger das bordas
+	borderDebugger();
+
 	glFlush();
 }
 
@@ -70,6 +73,7 @@ void AtualizaTela(int value){
 
 	//Redesenho da Tela
 	AtualizaEstado(0);
+	CollisionDetector();
 	DesenhaTela(0);
 
 	//Chamada recursiva da função para garantir que seja executada múltiplas vezes

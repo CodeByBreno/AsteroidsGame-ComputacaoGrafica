@@ -8,6 +8,7 @@ typedef struct{
 	float y;
 	int type;
 	float angle;
+	float radius;
 } element;
 
 typedef struct{
@@ -47,4 +48,8 @@ int CANVA_HEIGHT = 1000.0f;
 #define TEMPO_ATUALIZACAO_TELA 10
 #define GARBAGE_TIME 10
 
-
+#define HITBOX_AST0 45
+#define HITBOX_AST1 30
+#define HITBOX_AST2 35
+#define HITBOX_AST3 15
+#define HITBOX_AST4 50

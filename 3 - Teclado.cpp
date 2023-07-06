@@ -5,7 +5,7 @@ void Keyboard(unsigned char key, int x, int y){
 	}
 	if (key == ' '){
 		if (counter_shoot == SHOOT_COUNTER){
-			addElement_LE(&Tiros, x_nave, y_nave, tipo_tiro, angulo_nave);
+			addElement_LE(&Tiros, x_nave, y_nave, tipo_tiro, angulo_nave, 0);
 			counter_shoot = 0;
 		}
 	}

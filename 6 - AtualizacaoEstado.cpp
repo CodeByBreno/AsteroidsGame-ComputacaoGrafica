@@ -60,35 +60,55 @@ void AtualizaEstado(int value){
 	AtualizaAsteroide();
 }
 
+float hitboxRadius(int value){
+	switch(value){
+		case 0:
+			return HITBOX_AST0;
+		case 1:
+			return HITBOX_AST1;
+		case 2:
+			return HITBOX_AST2;
+		case 3:
+			return HITBOX_AST3;
+		case 4:
+			return HITBOX_AST4;
+		default:	
+			printf("ERRO: Variedade de Asteroide com Hitbox não definida\n");
+			exit(504);
+	}
+}
+
 void CreateAsteroid(int value){
 
     unsigned long long seed = currentTimestampMillis();
     srand((unsigned)seed);
 
 	int angle, randomNum, geracaoAsteroide = rand()%4;
-	int tipoAsteroide = rand()%2;
+	int tipoAsteroide = rand()%5;
 	float x_asteroide, y_asteroide;
+
+	float radius = hitboxRadius(tipoAsteroide);
 
 	switch(geracaoAsteroide%4){
 		case 0:
-			randomNum = rand()%1300;
-			x_asteroide = 550.0f;
-			y_asteroide = (float)randomNum - 650.0;
+			randomNum = rand()%(CANVA_HEIGHT + 100);
+			x_asteroide = CANVA_X0 + CANVA_WIDTH + 50;
+			y_asteroide = (float)randomNum + CANVA_Y0;
 			break;
 		case 1:
-			randomNum = rand()%1300;
-			x_asteroide = -550.0f;
-			y_asteroide = (float)randomNum - 650.0;
+			randomNum = rand()%(CANVA_HEIGHT + 100);
+			x_asteroide = CANVA_X0 - 50;
+			y_asteroide = (float)randomNum + CANVA_Y0;
 			break;
 		case 2:
-			randomNum = rand()%1100;
-			x_asteroide = (float)randomNum - 550.0;
-			y_asteroide = -650.0f;
+			randomNum = rand()%(CANVA_WIDTH + 100);
+			x_asteroide = (float)randomNum + CANVA_X0;
+			y_asteroide = CANVA_Y0 - 50;
 			break;
 		case 3:
-			randomNum = rand()%1100;
-			x_asteroide = (float)randomNum - 550.0;
-			y_asteroide = 650.0f;		
+			randomNum = rand()%(CANVA_WIDTH + 100);
+			x_asteroide = (float)randomNum + CANVA_X0;
+			y_asteroide = CANVA_Y0 + CANVA_HEIGHT + 50;		
 			break;
 		default:
 			printf("ERRO: Problema ao gerar um asteroide novo\n");
@@ -96,7 +116,7 @@ void CreateAsteroid(int value){
 
 	printf("NOVO ASTEROIDE CRIADO\n");
 	angle = 180.0 - Degree(y_asteroide/x_asteroide);
-	addElement_LE(&Asteroides, x_asteroide, y_asteroide, tipoAsteroide, angle);
+	addElement_LE(&Asteroides, x_asteroide, y_asteroide, tipoAsteroide, angle, radius);
 
 	glutTimerFunc(TEMPO_CRIACAO_ASTEROIDE, CreateAsteroid, 0);
 }

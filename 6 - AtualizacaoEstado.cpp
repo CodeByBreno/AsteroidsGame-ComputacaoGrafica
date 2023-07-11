@@ -2,6 +2,16 @@
 //Atualização de Estado
 //
 
+void AtualizaEstado(int value){
+	if (counter_shoot < SHOOT_COUNTER) { counter_shoot++; }    //Um novo tiro só poderá ser disparado quando o contador atingir o valor máximo (SHOOT_COUNTER)
+	if (counter_smooth < SMOOTH_COUNTER) { counter_smooth++; } //A nave não para de imediato. Após parar de move-lá, somente quando o contador chegar ao valor
+                                                               //máximo, ela irá parar totalmente
+
+	AtualizaNave();
+	AtualizaTiro();
+	AtualizaAsteroide();
+}
+
 void AtualizaNave(){
 	int signal;
 	if (r_nave < 0){
@@ -47,35 +57,6 @@ void AtualizaAsteroide(){
 		Asteroides.elements[i].x += dx;
 		Asteroides.elements[i].y += dy;
 	}	
-
-}
-
-void AtualizaEstado(int value){
-	if (counter_shoot < SHOOT_COUNTER) { counter_shoot++; }    //Um novo tiro só poderá ser disparado quando o contador atingir o valor máximo (SHOOT_COUNTER)
-	if (counter_smooth < SMOOTH_COUNTER) { counter_smooth++; } //A nave não para de imediato. Após parar de move-lá, somente quando o contador chegar ao valor
-                                                               //máximo, ela irá parar totalmente
-
-	AtualizaNave();
-	AtualizaTiro();
-	AtualizaAsteroide();
-}
-
-float hitboxRadius(int value){
-	switch(value){
-		case 0:
-			return HITBOX_AST0;
-		case 1:
-			return HITBOX_AST1;
-		case 2:
-			return HITBOX_AST2;
-		case 3:
-			return HITBOX_AST3;
-		case 4:
-			return HITBOX_AST4;
-		default:	
-			printf("ERRO: Variedade de Asteroide com Hitbox não definida\n");
-			exit(504);
-	}
 }
 
 void CreateAsteroid(int value){
@@ -116,8 +97,10 @@ void CreateAsteroid(int value){
 
 	printf("NOVO ASTEROIDE CRIADO\n");
 	angle = 180.0 - Degree(y_asteroide/x_asteroide);
-	addElement_LE(&Asteroides, x_asteroide, y_asteroide, tipoAsteroide, angle, radius);
+	if (!game_start)
+		addElement_LE(&Asteroides, x_asteroide, y_asteroide, tipoAsteroide, angle, radius);
 
-	glutTimerFunc(TEMPO_CRIACAO_ASTEROIDE, CreateAsteroid, 0);
+	if (game_running == 1){
+		glutTimerFunc(TEMPO_CRIACAO_ASTEROIDE, CreateAsteroid, 0);
+	}
 }
-

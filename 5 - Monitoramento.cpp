@@ -30,7 +30,9 @@ void GarbageCollector(int value){
 		}
 	}
 
-	glutTimerFunc(GARBAGE_TIME, GarbageCollector, 0);
+	if (game_running){
+		glutTimerFunc(GARBAGE_TIME, GarbageCollector, 0);
+	}
 }
 
 void CollisionDetector(){
@@ -39,9 +41,32 @@ void CollisionDetector(){
 		for (int j = 0; j < Asteroides.size; j++){
 			element asteroid = Asteroides.elements[j];
 			if (distance(disparo.x, disparo.y, asteroid.x, asteroid.y) <= asteroid.radius){
+				player_score += asteroid.type;
 				popElement_LE(&Asteroides, asteroid.x, asteroid.y);
 				popElement_LE(&Tiros, disparo.x, disparo.y);
 			}
 		}
 	}
+
+	for (int i = 0; i < Asteroides.size; i++){
+		element asteroid = Asteroides.elements[i];
+		if (distance(x_nave, y_nave, asteroid.x, asteroid.y) <= asteroid.radius + hitbox_nave){
+			EndGame();
+		}
+	}
 }
+
+/*
+    unsigned long long seed = currentTimestampMillis();
+    srand((unsigned)seed);
+	for (int i = 0; i < Asteroides.size; i++){
+		element asteroid = Asteroides.elements[i];
+		for (int j = 0; j < Asteroides.size; j++){
+			element asteroid2 = Asteroides.elements[j];
+			if (distance(asteroid2.x, asteroid2.y, asteroid.x, asteroid.y) <= asteroid.radius + asteroid2.radius){
+				Asteroides.elements[i].angle = Degree((asteroid2.y - asteroid.y)/(asteroid2.x - asteroid.x));
+				Asteroides.elements[j].angle = 180 - Degree((asteroid2.y - asteroid.y)/(asteroid2.x - asteroid.x));
+			}	
+		}
+	}
+*/

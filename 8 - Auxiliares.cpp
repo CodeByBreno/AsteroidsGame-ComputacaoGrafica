@@ -1,6 +1,16 @@
-
+//
 //Auxiliares
+//
+
 float Radian(float angle){
+	while(angle > 360){
+		angle -= 360;
+	}
+	while(angle < 0)
+	{
+		angle += 360;
+	}
+
 	return (3.14159/180)*angle;
 }
 
@@ -41,3 +51,36 @@ float distance(float x0, float y0, float x1, float y1){
 
 	return sqrt(sqdx + sqdy);
 }
+
+void DesenhaTexto(char *string, float x, float y){
+	glRasterPos2f(x, y);
+	while (*string){	
+		glutBitmapCharacter(FONTE_PADRAO, *string++);
+	}
+}
+
+void DesenhaTextoPequeno(char *string, float x, float y){
+	glRasterPos2f(x, y);
+	while (*string){	
+		glutBitmapCharacter(FONTE_PEQUENA, *string++);
+	}
+}
+
+float hitboxRadius(int value){
+	switch(value){
+		case 0:
+			return HITBOX_AST0;
+		case 1:
+			return HITBOX_AST1;
+		case 2:
+			return HITBOX_AST2;
+		case 3:
+			return HITBOX_AST3;
+		case 4:
+			return HITBOX_AST4;
+		default:	
+			printf("ERRO: Variedade de Asteroide com Hitbox não definida\n");
+			exit(504);
+	}
+}
+

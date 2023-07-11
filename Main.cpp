@@ -26,11 +26,12 @@
 #include "9 - EstruturasDeDados.cpp"
 
 int main(){
+
 	//Inicializando as estruturas de dados
 	inicializar_LE(&Tiros);
 
-	//Setando o modo do OpenGL com apenas um buffer de cores e cor em RGB
-	glutInitDisplayMode( GLUT_SINGLE | GLUT_RGB );
+	//Setando o modo do OpenGL com dois buffers de exibição, cores em RGB
+	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGB );
 
 	//Criando uma janela no SO
 	glutInitWindowPosition((int)(LARGURA_TELA/2 - LARGURA_JANELA/2), (int)(ALTURA_TELA/2 - ALTURA_JANELA/2));
@@ -52,7 +53,7 @@ int main(){
 	//Função de desenho da tela
 	glutTimerFunc(TEMPO_ATUALIZACAO_TELA, AtualizaTela, 0);
 
-	//Função responsável por eliminar elementos fora da tela
+	//Função responsável por eliminar elementos fora da telaq
 	glutTimerFunc(GARBAGE_TIME, GarbageCollector, 0);
 
 	//Função responsável por gerar um asteroide a cada intervalo de tempo

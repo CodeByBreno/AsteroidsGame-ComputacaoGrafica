@@ -40,3 +40,20 @@ void Reshape(GLsizei w, GLsizei h)
     gluOrtho2D(CANVA_X0, CANVA_X0 + CANVA_WIDTH, CANVA_Y0, CANVA_Y0 + CANVA_HEIGHT);
 }
 
+void EndGame(){
+	game_running = 0;
+}
+
+void AtualizaTela(int value){
+	//Chamada recursiva da função para garantir que seja executada múltiplas vezes
+	if (game_running == 1){
+		//Redesenho da Tela
+		AtualizaEstado(0);
+		CollisionDetector();
+		DesenhaTela(0);
+
+		glutTimerFunc(TEMPO_ATUALIZACAO_TELA, AtualizaTela, 1);
+	} 
+}
+
+

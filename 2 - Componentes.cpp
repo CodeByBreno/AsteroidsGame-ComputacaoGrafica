@@ -538,16 +538,6 @@ void DesenhaFumaca(int frame){
 	}
 }
 
-void DesenhaNaveHitbox(){
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_LINE_LOOP);
-		glVertex2f(-20.0f, 24.0f);
-		glVertex2f(20.0f, 24.0f);
-		glVertex2f(20.0f, -22.0f);
-		glVertex2f(-20.0f, -22.0f);
-	glEnd();
-}
-
 void DesenhaNave(){
 	static int frame = 0;
 	glLineWidth(2.0*(10000/(CANVA_WIDTH*CANVA_HEIGHT)));

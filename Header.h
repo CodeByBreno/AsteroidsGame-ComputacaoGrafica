@@ -9,7 +9,6 @@ void DrawCircle(float r, float x0, float y0);
 
 /*Funções para Desenhar os Componentes do Jogo*/
 void DesenhaFumaca(int frame);
-void DesenhaNaveHitbox();
 void DesenhaNave();
 void DesenhaTiro();
 void DesenhaAsteroide();
@@ -29,6 +28,7 @@ void DesenhaTiroTela();
 void DesenhaAsteroideTela();
 void DesenhaLog();
 void DesenhaTela(int value);
+void DesenhaScoreTela();
 
 /*Funções para Monitoramento de Condições*/
 int NaveForaTela(float dx, float dy);
@@ -38,7 +38,7 @@ void CollisionDetector();
 /*Funções de Atualização de Estado do Jogo*/
 void AtualizaNave();
 void AtualizaTiro();
-void AtualizaAsteroid();
+void AtualizaAsteroide();
 void AtualizaEstado(int value);
 void CreateAsteroid(int value);
 
@@ -46,6 +46,8 @@ void CreateAsteroid(int value);
 void Inicializar(void);
 void Desenha(void);
 void Reshape(GLsizei w, GLsizei h);
+void EndGame();
+void AtualizaTela(int value);
 
 /*Funções Auxiliares*/
 float Radian(float angle);
@@ -53,6 +55,9 @@ float Degree(float angle);
 unsigned long long currentTimestampMillis();
 void borderDebugger();
 float distance(float x0, float y0, float x1, float y1);
+void DesenhaTexto(char *string, float x, float y);
+float hitboxRadius(int value);
+void DesenhaTextoPequeno(char *string, float x, float y);
 
 /*Estruturas de Dados e Funções para Manipulá-las*/
 void createElement(element * newElement, float x, float y, int type, float angle, float radius);

@@ -18,6 +18,11 @@ float Degree(float angle){
 	return (180/3.14156295)*angle;
 }
 
+float reverseAngle(float angulo){
+	int aux = (int) angulo;
+	return ((aux + 180) % 360);
+}
+
 unsigned long long currentTimestampMillis() {
     struct timespec ts;
     if (clock_gettime(CLOCK_MONOTONIC, &ts) != 0) {
@@ -81,6 +86,28 @@ float hitboxRadius(int value){
 		default:	
 			printf("ERRO: Variedade de Asteroide com Hitbox não definida\n");
 			exit(504);
+	}
+}
+
+float angleAfterColision(float x1, float y1, float x2, float y2){
+	float anguloColisao;
+	float dx = x2 - x1, dy = y2 - y1; 
+
+	if ((dx > 0) && (dy > 0)){
+		anguloColisao = Degree(atan(dy/dx));
+		return anguloColisao + 180;
+	} 
+	if ((dx < 0) && (dy > 0)){
+		anguloColisao = Degree(atan(dy/-dx));
+		return 360 - anguloColisao;
+	}
+	if ((dx > 0) && (dy < 0)){
+		anguloColisao = Degree(atan(-dx/dx));
+		return 180 - anguloColisao;
+	}
+	if ((dy < 0) && (dx < 0)){
+		anguloColisao = Degree(atan(dy/dx));
+		return anguloColisao;
 	}
 }
 

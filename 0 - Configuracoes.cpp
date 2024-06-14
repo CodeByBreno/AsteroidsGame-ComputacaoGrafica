@@ -1,5 +1,5 @@
 //
-// Variáveis da Aplicação
+// Variï¿½veis da Aplicaï¿½ï¿½o
 // e Tipos Abstratos de Dados
 //
 
@@ -53,7 +53,7 @@ int CANVA_HEIGHT = 1000.0f;
 #define VELOCIDADE_TIRO 30.0f
 #define VELOCIDADE_ASTEROIDE 4.0f
 
-#define TEMPO_CRIACAO_ASTEROIDE 100
+#define TEMPO_CRIACAO_ASTEROIDE 200
 #define TEMPO_ATUALIZACAO_TELA 10
 #define GARBAGE_TIME 10
 
@@ -77,3 +77,5 @@ int CANVA_HEIGHT = 1000.0f;
 
 #define FONTE_PADRAO GLUT_BITMAP_TIMES_ROMAN_24
 #define FONTE_PEQUENA GLUT_BITMAP_HELVETICA_18
+
+#define CAN_DIE 1

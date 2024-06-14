@@ -58,6 +58,8 @@ float distance(float x0, float y0, float x1, float y1);
 void DesenhaTexto(char *string, float x, float y);
 float hitboxRadius(int value);
 void DesenhaTextoPequeno(char *string, float x, float y);
+float reverseAngle(float angulo);
+float angleAfterColision(float x1, float y1, float x2, float y2);
 
 /*Estruturas de Dados e Funções para Manipulá-las*/
 void createElement(element * newElement, float x, float y, int type, float angle, float radius);

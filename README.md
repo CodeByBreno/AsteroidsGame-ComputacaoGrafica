@@ -13,7 +13,7 @@ projeto bem desafiador e trabalhoso, mas que ao final ficou muito bem organizado
 
 # ⚙️ Como Executar o Projeto?
 
-Uma das praticidades de trabalhar diretamente com C é que após a compilação, é gerado um .exe que pode ser diferetamente pelo no sistema operacional. Dessa
+Uma das praticidades de trabalhar com C é que após a compilação, é gerado um .exe que pode ser executado diferetamente pelo no sistema operacional. Dessa
 forma, para executar o projeto basta clicar nos arquivos .exe que desejar abrir. Segue abaixo uma lista deles:<br>
 
 <strong>./Main.exe                         -> Executável principal do jogo</strong>
